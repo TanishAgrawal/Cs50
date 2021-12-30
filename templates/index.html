@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <!-- if there is no tasks assigned this will be displayed -->
+    {% if work|length == 0 %}
+    <div id="index">
+        <p class="left"><strong>Please add Some Tasks</strong></p>
+        <form action="/add" class="right">
+            <input type="image" src="/static/images/add.png" alt="Add" style="border-radius: 50%;">
+        </form>
+    </div>
+        
+    {% else %}
+
+    <table class="table_work">
+        <thead>
+          <tr>
+              <th>S.no</th>
+              <th>Task</th>
+              <th>Description</th>
+              <th>Deadline</th>
+              <th>Priority</th>
+              <th>Done</th>
+              <th>
+                  <div class="add_button">
+                      <form action="/add">
+                        <input type="image" src="/static/images/add.png" class="icon" alt="Add">
+                      </form>
+                  </div>
+              </th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for total in work %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ total.task }}</td>
+                  <td>{{ total.description }}</td>
+                  <td>{{ total.deadline }}</td>
+                  <td>{{ total.priority }}</td>
+                  <td><form action="/delete/{{ total.id }}" method="POST"><input type="submit" name= "delete" class="icon" value="Yes"></form></td>
+                  <td><form action="/update/{{ total.id }}"><input type="image" src="/static/images/edit--v1.png" alt="Update" class="icon"></form></td>
+                  <td><form action="/delete/{{ total.id }}" method="POST"><input type="image" value="ok" name= "delete" src="/static/images/icons8-delete-30.png" alt="Delete" class="icon"></form></td>
+              </tr>
+            {% endfor %}
+            
+        </tbody>
+        
+    </table>
+    {% endif %}
+          
+{% endblock %}

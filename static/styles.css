@@ -1,0 +1,550 @@
+/* the variables helps the styling be easy and can be changes easily */
+:root{
+   --primary: #fefefe;
+   --secondary:  #f6bf56;
+   --font:#364165;
+   --shadows: #e3e3e3;
+   --outline: #c7c7c7;
+   --hover: #CDDEFF;
+}
+
+*{
+   margin: 0;
+   padding:0;
+   font-family: 'Courier New', monospace;
+   font-weight: normal;
+   color: var(--font);
+   scroll-behavior: smooth;
+   box-sizing: border-box;
+}
+
+body{
+   background-color: var(--primary);
+}
+
+/* so that flash messages are aligned on the left side */
+header{
+    text-align: left;
+ }
+
+ main{
+   margin-top: 1em;
+   margin-left: 5em;
+   margin-right: 5em;
+   font-size: 1.5rem;
+   text-align: center;
+}
+
+/* all buttons,inputareas,dropdowns or input feild will remove the box shadow when clicked or hovered*/
+/* transition attribute increase the time of the transition and smoothens it  */
+button{
+   cursor: pointer;
+   padding: 0.4em;
+   border-radius: 2em;
+   font-size: 1.4rem;
+   border: 1px solid var(--outline);
+   background-color: var(--input);
+   width: 40vw;
+   box-shadow: 3px 3px 3px 2px var(--shadows);
+   transition: all .3s ease-in-out;
+}
+
+button:focus{
+   outline: 0; 
+   box-shadow: none;
+}
+
+input{
+   background-color: var(--input);
+   border-radius: 100px;
+   padding: 1em;
+   border: 1px solid var(--outline);
+   transition: all .3s ease-in-out;
+   box-shadow: 3px 3px 3px 2px var(--shadows);
+}
+
+li {
+   list-style: none;
+   transition: all .3s ease-in-out;
+}
+
+li:hover {
+   transform: translateY(-5px);
+}
+
+textarea{
+   transition: all .3s ease-in-out;
+   background-color: var(--input);
+   box-shadow: 3px 3px 3px 2px var(--shadows);
+   border: 1px solid var(--outline);
+}
+
+a {
+   text-decoration: none;
+   padding: 0.5em;
+   border-radius: 10px;
+}
+
+li a:hover{
+   background-color: var(--hover);
+   transition: all 0.3s ease-in-out;
+}
+
+/* outline offset is the outline when we get by tabbing */
+a:active{
+   outline: 2px solid gray;
+   outline-offset: 0.2rem;
+   border-bottom: solid var(--outline) 1px;
+   
+}
+
+/* border spacing is the space between 2 columns */
+table{
+   text-align: left;
+   border-spacing: 0.5rem;
+}
+
+/* with the help of this we can align the content of the table at the top of it*/
+table td, table tr{
+   vertical-align: top;
+}
+
+/* to show the button when hovere over the table row */
+tr:hover .icon{
+   visibility: visible;
+}
+
+
+footer{
+   color: hsl(0, 0%, 30%);
+   border-top: solid var(--outline) 1px;
+   font-size: 1rem;
+   text-align: center;
+   margin: 1em auto 1em auto;
+   width: 20vw;
+   padding-top: 0.2em;
+}
+
+.open{
+   width: 30px;
+   height: 1px;
+   background-color: var(--font);
+   margin-bottom: 5px;
+   transition: all .3s ease-in-out;
+}
+
+/* diplay is none because when the screen is of a particular size then only we get the hamburger menu */
+.menu{
+   position: absolute;
+   top: 4em;
+   right: 5em;
+   width: 30px;
+   height: 30px;
+   display:none;
+   cursor: pointer;
+   background-color: transparent;
+}
+
+.drop{
+   box-shadow: 3px 3px 3px 2px var(--shadows);
+   transition: all .3s ease-in-out;
+   background-color: var(--input);
+   border-radius: 100px;
+   padding: 1em;
+   border:solid var(--outline) 1px;
+}
+
+/* this is styling the profile dropdown */
+.display{
+   visibility: visible !important;
+   opacity: 1;
+}
+
+.drop:hover, input:hover, textarea:hover, button:hover{
+   box-shadow: none;
+}
+.drop:focus, input:focus, textarea:focus{
+   box-shadow: none;
+   outline: 0;
+}
+
+.error{
+   padding: 1em;
+   text-align: center;
+   max-width: 70vw;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+
+/* the login register forms with flex and direction column */
+.horizontal_form{
+   margin: auto;
+   display: flex;
+   gap: 1.3rem;
+   width: 40vw;
+   flex-direction: column;
+   text-align: left;
+}
+
+.para{
+   font-size: 1.2rem;
+   margin-top: 10px;
+}
+
+/* the description input feild with hieght of 10 veiw hieght */
+.description{
+   resize: none;
+   height: 15vh;
+   border-radius: 20px;
+   padding: 1em;
+}
+
+/* hepled to make the add and update page and there forms */
+.inwebsite{
+   margin: auto;
+   display: flex;
+   width: 40vw;
+   flex-direction: column;
+   gap: 0.4em;
+   text-align: left;
+}
+
+.about{
+   padding-top : 0.5em;
+}
+
+.about b{
+   font-weight: normal;
+   font-size: 2rem;
+}
+
+/* icon is hidden and will be shown when hovered */
+.icon{
+   cursor: pointer;
+   border-radius: 100%;
+   visibility: hidden;
+}
+
+.table_work{
+   width: 100%;
+   padding-bottom: 1em;
+   border-spacing: 0.7em;
+}
+
+.title{
+   font-size: 7rem;
+   transition: all 0.3s ease-in-out;
+   margin-right: auto;
+}
+
+.title a{
+   padding: 0;
+}
+
+/* this transform effect will lift the title by 5px on hover  */
+.title:hover{
+   transform: translateY(-5px);
+}
+
+.title a:hover{
+   color: var(--secondary);
+   background-color: var(--primary);
+}
+
+.navbar{
+   padding: 0.7em 5em 0em 5em;
+   display: flex;
+   justify-content: flex-end;
+   width: 100vw;
+}
+
+/* display flex waws used to easyly make the navbar and align them accordingly */
+.nav-list{
+   display: flex;
+   align-items: center;
+   gap: 1.5em;
+   font-size: 1.4rem;
+   transition: all 0.3s ease-in-out;
+   position: relative;
+}
+
+/* this is the fine line which divides sections */
+.br{
+   height: 1px;
+   width: 70vw;
+   margin-left: auto;
+   margin-right: auto;
+   border-bottom: solid var(--outline) 1px;
+}
+
+
+/* this helped me to give a gave between description becasue it was a big criteria */
+.table_work th:nth-of-type(3), .table_work td:nth-of-type(3){
+   padding-right: 3em;
+}
+
+/* here the position is absolute to the username and the opacity brings the fade in and out  */
+.sub_menu{
+   position:absolute;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   
+   border-radius: 0.5em;
+   background-color: var(--primary);
+   box-shadow: 3px 3px 3px 2px var(--shadows);
+   height: 23vh;
+   visibility: hidden;
+   opacity: 0;
+   padding: 1em;
+   right: 1px;
+   width: 23vw;
+   transition: all 0.3s ease-in-out;
+ }
+
+.sub_menu li{
+   padding: 0.5em;
+   text-align: center;
+   width: 100%;
+   border-radius: 10px;
+}
+
+ .sub_menu a{
+   width: 100%;
+ }
+
+.sub_menu li:hover, .sub_menu li:active{
+   background-color: var(--hover);
+}
+
+
+/* the add some task meassage and the button will be alligned next to each other */
+#index{
+    display:flex;
+    text-align: center;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+ }
+
+#username{
+   border: solid var(--secondary) 1px;
+   padding: 0.5em 0.7em 0.5em 0.7em;
+   display: inline-block;
+   transition: all 0.3s ease-in-out;
+   cursor: pointer;
+   border-radius: 0.5em;
+   }
+
+#username:hover{
+   background-color: var(--secondary);
+}
+
+#profile:hover .sub_menu{
+   visibility: visible;
+   opacity: 1;
+}
+
+/* the submenu is relative to this */
+#profile{
+   position: relative;
+} 
+
+ #create{
+   color: blue;
+}
+
+#flash{
+   margin-left: 4em; 
+   padding: 0.4em; 
+   font-size: 1.5rem;
+}
+
+#cancel{
+   margin-top: 1em;
+   margin-bottom: 1em;
+}
+
+#submit{
+ padding-top: 1em;
+}
+
+#submit a{
+   background-color: var(--input);
+}
+
+#remember_{
+   font-size: 1.2rem;
+}
+
+#login a{
+   border-radius: 10px;
+   transition: all .3s ease-in-out;
+   border: solid var(--secondary) 1px;
+}
+
+#login a:hover{
+   background-color: var(--secondary);
+   box-shadow: none;
+}
+
+/* custumizing the scrollbar */
+::-webkit-scrollbar{
+   width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: #888;
+ }
+ 
+ /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #555;
+ }
+
+@media only screen and (max-width: 1166px) {
+
+   main{
+      overflow: auto;
+   }
+
+   .navbar{
+      flex-direction: column;
+      align-items:flex-start;
+      text-align: center;
+      gap: 1em;
+   }
+   .nav-list li:nth-of-type(1){
+      margin-left: 0;
+   }
+
+
+   .menu{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   a{
+      padding: 0.2em;
+   }
+
+   .nav-list{
+      margin-left: 0;
+      flex-direction: column;
+      height: 0;
+      width: 100%;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+   }
+
+   .horizontal_form , .inwebsite , button{
+      width: 70vw;
+   }
+
+   .table_work{
+      border-spacing: 0.7em;
+   }
+}
+
+@media only screen and (max-width: 850px) {
+
+   main{
+      font-size: 1.7rem;
+      margin-left: 1em;
+      margin-right: 1em;
+   }
+
+   button{
+      font-size: 1.7rem;
+      padding: 0.2em;
+   }
+
+   input{
+      padding: 1em;
+   }
+
+   footer{
+      font-size: 1.2rem;
+      width: 40vw;
+   }
+
+   label{
+      font-size: 1rem;
+   }
+
+   .menu{
+      right: 1em;
+      top: 3em;
+   }
+
+   .navbar{
+      padding: 0.75em 1em 0em 1em;
+   }
+
+   
+
+   .para{
+      font-size: 1.3rem;
+   }
+
+   
+
+   .horizontal_form{
+      gap: 0.4em;
+   }
+
+   #flash{
+      margin-left: 1em;
+   }
+
+ }
+
+@media only screen and (max-width: 480px) {
+
+   main{
+      font-size: 1.8rem;
+      margin-left: 1.5em;
+      margin-right: 1.5em;
+   }
+
+   input{
+      padding: 0.8em;
+   }
+
+   footer{
+      width: 40vw;
+   }
+
+   label, .para, footer{
+      font-size: 1.4rem;
+   }
+
+   button{
+      padding: 0.2em;
+      
+   }
+
+   #flash, button{
+      font-size: 1.5rem;
+   }
+   
+   .nav-list{
+      gap: 1em;
+   }
+
+   .title{
+      font-size: 6rem;
+   }
+ }

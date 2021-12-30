@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Registration
+{% endblock %}
+
+{% block main %} 
+    <!-- we can use jinja to help display the error only if there is some value assigned to the error variable -->
+    {% if error %}  
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %} 
+    <form action="/register" method="POST" class="horizontal_form" >
+        
+        <label for="username">Username</label>
+        <input name="username" placeholder="Username" type="text" autocomplete="off" id="user">
+        
+        <label for="password">Password</label>
+        <input name="password" placeholder="Password" type="password" autocomplete="off">
+        
+        <label for="password_check">Password Confirmation</label>
+        <input name="password_check" placeholder="Password(Again)" type="password" autocomplete="off">
+        <div>
+            <input type="checkbox" id="remember" name="remember" value="remember">
+            <label for="remember" id="remember_">Remember Me</label>
+        </div>
+        
+        <button type="submit" id="login">Sign In</button>
+    </form>
+        
+{% endblock %}

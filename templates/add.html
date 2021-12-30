@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    New Task
+{% endblock %}
+
+{% block main %}
+    {% if error %}  
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+    <form action="/add" method="post" class="inwebsite" >
+
+            <label for="task">Task</label>
+            <input name="task" placeholder="Task" type="text" autocomplete="off">
+            
+            <label for="description">Description</label>
+            <textarea name="description" placeholder="Description" type="text" autocomplete="off" class = "description"></textarea>
+        
+            <label for="deadline">Deadline</label>
+            <input name="deadline" placeholder="Deadline" type="date">
+            
+            <label for="priority">Priority</label>
+            <select name="priority" class="drop">
+                <option disabled selected>Priority(Optional)</option>
+                <option value="Very Important">Very Important</option>
+                <option value="Important">Important</option>
+                <option value="Not So Important">Not So Important</option>
+          </select>
+        <div id="submit">
+            <button type="submit" name="add" value="add"><a href="/">ADD TASK</a></button>
+            <button type="submit" name="add" value="cancel" id="cancel"><a href="/">Cancel</a></button>
+        </div>
+        
+    </form>
+{% endblock %}

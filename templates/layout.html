@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <link href="/static/styles.css" rel="stylesheet">
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                let nav = document.getElementById('nav-toogle')
+                let bars = document.querySelectorAll(".open")
+                let active = false;
+                document.querySelector('#nav_menu').addEventListener('click', function(){
+                    if(!active){
+                        bars[0].style.transform = "translateY(6px) rotate(45deg)"
+                        bars[1].style.opacity = "0"
+                        bars[2].style.transform = "translateY(-6px) rotate(-45deg)"
+                        nav.style.maxHeight = "0vh";
+                        nav.style.minHeight = "100vh";
+                        active = true;
+                    }
+                    else{
+                        bars[0].style.transform = "rotate(0deg)"
+                        bars[1].style.opacity = "1"
+                        bars[2].style.transform = "rotate(0deg)"
+                        nav.style.minHeight = "0vh";
+                        nav.style.maxHeight = "0vh";
+                        active = false;
+                    }
+                });
+
+                document.querySelector('#username').addEventListener('click', function(){
+                    let menu = document.querySelector('#sub_menu')
+                    menu.classList.toggle("display");
+                });
+
+            });
+            
+        </script>
+        <title>  {% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                    <div class="title">
+                        <a href="/">TOdo</a>
+                    </div>
+                    <div class="menu" id="nav_menu">
+                        <span class="open"></span>
+                        <span class="open"></span>
+                        <span class="open"></span>
+                    </div>
+            
+            {% if session.user_id %}
+                <ul class="nav-list" id="nav-toogle">
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li id="profile"> 
+                        <p id="username">{{ session.username }} </p>
+                        <ul id="sub_menu" class="sub_menu">
+                            <li><a href="/ChangePassword">Change Password</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            {% else %}
+                <ul class="nav-list" id="nav-toogle">
+                    <li><a href="/contact">Contact us</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li id="login"><a href="/login">Log In</a></li>
+                </ul>
+            
+            {% endif %}
+
+            </nav>
+        </header>
+
+        <div class="br"></div>
+
+        {% if get_flashed_messages() %}
+            <header >
+                <div id="flash">
+                    <!-- it gets the value of the messege we want to display  -->
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        
+            <footer>
+            Created By Tanish Agrawal
+            </footer>
+    </body>
+
+</html>

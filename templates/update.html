@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title%}
+    Update Task
+{% endblock %}
+
+{% block main %}
+{% for i in work %}
+
+    <!-- with the help of the action we can get the id which we want to update  -->
+    <form action="/update/{{ i.id }}" method="POST" class="inwebsite" >
+        <label for="task">Task</label>
+        <input name="task" placeholder="Task" type="text" autocomplete="off" value="{{ i.task }}">
+        
+        <label for="description">Description</label>
+        <textarea name="description" placeholder="Description" type="text" class = "description">{{ i.description }}</textarea>
+        
+        <label for="deadline">Deadline</label>
+        <input name="deadline" placeholder="Deadline" type="date" id="deadline" value="{{ deadline_inverted }}">
+        
+        <label for="priority">Priority</label>
+        <select id="Dropdown" name="priority" class="drop">
+            <!-- the selected value is the default value of the priority dropdown -->
+            <selected value = " {{ i.priority }}">
+            <option disabled>Priority(Optional)</option>
+            <option value="Very Important">Very Important</option>
+            <option value="Important">Important</option>
+            <option value="Not So Important">Not So Important</option>
+          </select>
+        <div id="submit">
+            <!-- here the name of both of them are same we have to compare the ids and whether we have to canel the request or not -->
+            <button type="submit" name="update" value="update"><a href="/">Update</a></button>
+            <button type="submit" name="update" value="cancel" id="cancel"><a href="/">Cancel</a></button>
+        </div>
+          
+    </form>
+{% endfor %}
+{% endblock %}

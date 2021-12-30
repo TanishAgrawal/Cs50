@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Login
+{% endblock %}
+
+{% block main %} 
+    {% if error %}  
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+    <form action="/login" method="POST" class="horizontal_form">
+        <label for="username">Username</label>
+        <input name="username" placeholder="Username" type="text" autocomplete="off" id="user">
+        <label for="password">Password</label>
+        <input name="password" placeholder="Password" type="password" autocomplete="off">
+        <div>
+            <input type="checkbox" id="remember" name="remember" value="remember">
+            <label for="remember" id="remember_">Remember Me</label>
+        </div>
+        <button type="submit" id="login">Login</button>
+    </form>
+    <p class="para">Don't have an acount? <a id="create" href="/register">Create acount</a></p>
+
+{% endblock %}
